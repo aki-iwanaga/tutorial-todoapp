@@ -4,11 +4,23 @@ import React from "react";
 import TodoPage from "./TodoPage";
 
 
-describe('todoPage', ()=>{
-    it('タイトルが表示される', ()=>{
-        //When
+describe('todoPage', () => {
+    beforeEach(() => {
         render(<TodoPage />)
-        //Then
+    })
+    it('タイトルが表示される', () => {
         expect(screen.getByText('TodoApp チュートリアル')).toBeInTheDocument()
+    })
+
+    it('インプット要素が表示される', () =>{
+        expect(screen.getByRole('textbox')).toBeInTheDocument()
+    })
+
+    it('登録ボタンが表示される', () => {
+        expect(screen.getByRole('button', {name: '登録'})).toBeInTheDocument()
+    })
+
+    it('リスト要素が表示される', () => {
+        expect(screen.getByRole('list')).toBeInTheDocument()
     })
 })
